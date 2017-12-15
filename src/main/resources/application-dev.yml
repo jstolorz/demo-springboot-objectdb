@@ -1,0 +1,6 @@
+spring:
+ datasource:
+    url: jdbc:$objectdb/db/guests.odb
+    username: admin
+    password: admin
+    platform: objectdb
