@@ -8,7 +8,8 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
+import java.util.HashMap;
+import java.util.Map;
 
 
 @SpringBootApplication
@@ -22,7 +23,13 @@ public class DemoObjectdbApplication {
 	// Needed when using objectdb
 	@Bean
 	public EntityManagerFactory entityManagerFactory() {
-		return Persistence.createEntityManagerFactory("test.odb");
+
+		Map<String, String> properties = new HashMap<String, String>();
+		properties.put("javax.persistence.jdbc.user", "admin");
+		properties.put("javax.persistence.jdbc.password", "admin");
+
+		return Persistence.createEntityManagerFactory("objectdb://localhost:8888/recipies.odb",
+				properties);
 	}
 
 	// Needed when using objectdb

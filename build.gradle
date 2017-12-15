@@ -29,18 +29,22 @@ repositories {
 
 }
 
-
 dependencies {
-	compile('org.springframework.cloud:spring-cloud-starter-oauth2')
-	compile('org.springframework.boot:spring-boot-starter-security')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('org.springframework.boot:spring-boot-starter-tomcat')
 
-	// Needed to exclude these when using objectdb
 	compile('org.springframework.boot:spring-boot-starter-data-jpa') {
 		exclude module: 'spring-boot-starter-jdbc' //by artifact name
 		exclude module: 'hibernate-entitymanager' //by artifact name
 	}
+	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile( group: 'org.projectlombok', name: 'lombok')
+	compile 'org.webjars:bootstrap:3.3.7-1'
+	compile 'org.webjars.npm:jquery:3.2.1'
+	//compile('org.eclipse.persistence:javax.persistence:2.1.0')
 	compile('com.objectdb:objectdb:2.6.5')
-	compile('org.eclipse.persistence:javax.persistence:2.1.0')
+	runtime('org.springframework.boot:spring-boot-devtools')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
+
+
+
